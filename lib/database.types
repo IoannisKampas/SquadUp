@@ -1,0 +1,198 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      profiles: {
+        Row: {
+          id: string
+          created_at: string
+          updated_at: string
+          username: string | null
+          full_name: string | null
+          avatar_url: string | null
+          account_type: "player" | "pro" | "admin"
+          bio: string | null
+          location: string | null
+          discord_username: string | null
+          is_verified: boolean
+          application_status: "pending" | "approved" | "rejected" | null
+        }
+        Insert: {
+          id: string
+          created_at?: string
+          updated_at?: string
+          username?: string | null
+          full_name?: string | null
+          avatar_url?: string | null
+          account_type?: "player" | "pro" | "admin"
+          bio?: string | null
+          location?: string | null
+          discord_username?: string | null
+          is_verified?: boolean
+          application_status?: "pending" | "approved" | "rejected" | null
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          username?: string | null
+          full_name?: string | null
+          avatar_url?: string | null
+          account_type?: "player" | "pro" | "admin"
+          bio?: string | null
+          location?: string | null
+          discord_username?: string | null
+          is_verified?: boolean
+          application_status?: "pending" | "approved" | "rejected" | null
+        }
+      }
+      games: {
+        Row: {
+          id: string
+          name: string
+          slug: string
+          description: string | null
+          image_url: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          slug: string
+          description?: string | null
+          image_url?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          slug?: string
+          description?: string | null
+          image_url?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      game_profiles: {
+        Row: {
+          id: string
+          profile_id: string
+          game_id: string
+          rank: string | null
+          role: string | null
+          hours_played: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          profile_id: string
+          game_id: string
+          rank?: string | null
+          role?: string | null
+          hours_played?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          profile_id?: string
+          game_id?: string
+          rank?: string | null
+          role?: string | null
+          hours_played?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      sessions: {
+        Row: {
+          id: string
+          player_id: string
+          pro_id: string
+          game_id: string
+          status: "scheduled" | "completed" | "cancelled"
+          scheduled_at: string
+          duration_minutes: number
+          notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          player_id: string
+          pro_id: string
+          game_id: string
+          status?: "scheduled" | "completed" | "cancelled"
+          scheduled_at: string
+          duration_minutes: number
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          player_id?: string
+          pro_id?: string
+          game_id?: string
+          status?: "scheduled" | "completed" | "cancelled"
+          scheduled_at?: string
+          duration_minutes?: number
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      reviews: {
+        Row: {
+          id: string
+          session_id: string
+          reviewer_id: string
+          reviewee_id: string
+          rating: number
+          comment: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          session_id: string
+          reviewer_id: string
+          reviewee_id: string
+          rating: number
+          comment?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          session_id?: string
+          reviewer_id?: string
+          reviewee_id?: string
+          rating?: number
+          comment?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+  }
+}
